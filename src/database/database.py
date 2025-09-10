@@ -1,0 +1,27 @@
+import sqlite3
+
+class DB:
+    def __init__(self, DB_PATH):
+        self.DB_PATH = DB_PATH
+
+    def init_db():
+        con = sqlite3.connect(self.DB_PATH)
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS readings (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                light REAL
+            )
+        """)
+        con.commit()
+        con.close()
+
+    def save_reading(self, data):
+        with sqlite3.connect(self.DB_PATH) as con:
+            cur = con.cursor()
+            print(data)
+            cur.execute(
+                "INSERT INTO readings (light) VALUES (?)",
+                (data.get("light", 0.00))
+            )
+            con.commit()
