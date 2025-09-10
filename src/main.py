@@ -8,6 +8,7 @@ from src.jobs.sensors_job import sensor_job
 
 app = FastAPI()
 
+
 @app.on_event("startup")
 async def start_sensor_job():
     await sensor_job()
