@@ -1,7 +1,8 @@
 import time
 from smbus2 import SMBus
 
-class Light():
+
+class Light:
     def __init__(self):
         self.BH1750_ADDR = 0x23
 
