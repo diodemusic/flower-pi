@@ -20,8 +20,6 @@ class DB:
     def save_reading(self, data):
         with sqlite3.connect(self.DB_PATH) as con:
             cur = con.cursor()
-            print(data)
-            return
             cur.execute(
                 "INSERT INTO readings (light) VALUES (?)", (data.get("light", 0.00))
             )
