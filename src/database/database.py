@@ -26,7 +26,7 @@ class DB:
                     data.get(
                         "light",
                         0.00,
-                    )
+                    ),
                 ),
             )
             con.commit()
