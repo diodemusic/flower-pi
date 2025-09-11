@@ -15,3 +15,6 @@ echo "Virtual environment activated"
 
 echo "Installing dependencies"
 pip install -r requirements.txt
+
+echo "Installing fastapi"
+pip install fastapi[standard]
