@@ -18,3 +18,5 @@ pip install -r requirements.txt
 
 echo "Installing fastapi"
 pip install fastapi[standard]
+
+sudo chmod u+x start.sh
