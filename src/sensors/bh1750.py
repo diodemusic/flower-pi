@@ -1,4 +1,3 @@
-import time
 from smbus2 import SMBus
 
 
