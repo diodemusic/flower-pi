@@ -21,6 +21,12 @@ class DB:
         with sqlite3.connect(self.DB_PATH) as con:
             cur = con.cursor()
             cur.execute(
-                "INSERT INTO readings (light) VALUES (?)", (data.get("light", 0.00))
+                "INSERT INTO readings (light) VALUES (?)",
+                (
+                    data.get(
+                        "light",
+                        0.00,
+                    )
+                ),
             )
             con.commit()
