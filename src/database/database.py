@@ -12,7 +12,8 @@ class DB:
                 CREATE TABLE IF NOT EXISTS readings (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    light REAL
+                    light REAL,
+                    temp REAL
                 )
             """)
             con.commit()
@@ -21,12 +22,7 @@ class DB:
         with sqlite3.connect(self.DB_PATH) as con:
             cur = con.cursor()
             cur.execute(
-                "INSERT INTO readings (light) VALUES (?)",
-                (
-                    data.get(
-                        "light",
-                        0.00,
-                    ),
-                ),
+                "INSERT INTO readings (light, temp) VALUES (?, ?)",
+                (data.get("light", 0.00), data.get("temp", 0.00)),
             )
             con.commit()

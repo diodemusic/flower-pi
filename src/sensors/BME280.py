@@ -1,5 +1,4 @@
 from smbus2 import SMBus
-import time
 
 
 class Temp:
@@ -37,10 +36,3 @@ class Temp:
         t_fine = var1 + var2
         temp = (t_fine * 5 + 128) >> 8
         return temp / 100.0
-
-
-if __name__ == "__main__":
-    sensor = Temp()
-    while True:
-        print(f"Temperature: {sensor.read_temp():.2f} °C")
-        time.sleep(1)
