@@ -1,5 +1,5 @@
-from typing import Union
-from fastapi import FastAPI
+# from typing import Union
+from fastapi import FastAPI  # pyright: ignore[reportMissingImports]
 import asyncio
 
 from src.controllers.sensors_controller import read_sensors
