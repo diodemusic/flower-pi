@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-# Load .env file
 if [ -f .env ]; then
     export $(grep -v '^#' .env | xargs)
 fi
