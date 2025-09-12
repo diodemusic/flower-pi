@@ -15,5 +15,5 @@ async def sensor_job():
     while True:
         data = read_sensors()
         db.save_reading(data)
-        # cleanup_old_readings(limit=100)
+        db.cleanup_old_readings()
         await asyncio.sleep(5)

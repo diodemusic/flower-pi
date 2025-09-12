@@ -16,6 +16,7 @@ class DB:
                     temp REAL
                 )
             """)
+
             con.commit()
 
     def save_reading(self, data):
@@ -25,4 +26,19 @@ class DB:
                 "INSERT INTO readings (light, temp) VALUES (?, ?)",
                 (data.get("light", 0.00), data.get("temp", 0.00)),
             )
+
+            con.commit()
+
+    def cleanup_old_readings(self):
+        with sqlite3.connect(self.DB_PATH) as con:
+            cur = con.cursor()
+            cur.execute("""
+            DELETE FROM readings
+            WHERE id NOT IN (
+                SELECT id FROM readings
+                ORDER BY timestamp DESC
+                LIMIT 100
+            )
+            """)
+
             con.commit()
