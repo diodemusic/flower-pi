@@ -11,7 +11,7 @@ db = DB(DB_PATH)
 db.init_db()
 
 
-async def sensor_job():
+async def sensors_job():
     while True:
         data = read_sensors()
         db.save_reading(data)
