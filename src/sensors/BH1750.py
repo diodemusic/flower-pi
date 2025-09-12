@@ -1,7 +1,7 @@
 from smbus2 import SMBus
 
 
-class Light:
+class BH1750:
     def __init__(self):
         self.ADDR = 0x23
 

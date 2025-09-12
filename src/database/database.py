@@ -13,7 +13,9 @@ class DB:
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
                     light REAL,
-                    temp REAL
+                    temp REAL,
+                    pressure REAL,
+                    humidity REAL
                 )
             """)
 
@@ -23,8 +25,13 @@ class DB:
         with sqlite3.connect(self.DB_PATH) as con:
             cur = con.cursor()
             cur.execute(
-                "INSERT INTO readings (light, temp) VALUES (?, ?)",
-                (data.get("light", 0.00), data.get("temp", 0.00)),
+                "INSERT INTO readings (light, temp, pressure, humidity) VALUES (?, ?, ?, ?)",
+                (
+                    data.get("light", 0.00),
+                    data.get("temp", 0.00),
+                    data.get("pressure", 0.00),
+                    data.get("humidity", 0.00),
+                ),
             )
 
             con.commit()
