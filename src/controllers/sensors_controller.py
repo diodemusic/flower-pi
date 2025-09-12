@@ -1,4 +1,4 @@
-from src.sensors.bh1750 import Light
+from src.sensors.BH1750 import Light
 
 light = Light()
 
