@@ -1,16 +1,9 @@
-from src.sensors.BH1750 import BH1750
-from src.sensors.BME280 import BME280
+from src.database.database import DB
 
-bh1750 = BH1750()
-bme280 = BME280()
+db = DB()
 
 
 def read_sensors():
-    light = bh1750.read_light()
-    temp = bme280.read_temp()
-    pressure = bme280.read_pressure()
-    humidity = bme280.read_humidity()
+    r = db.get_readings()
 
-    data = {"light": light, "temp": temp, "pressure": pressure, "humidity": humidity}
-
-    return data
+    return r

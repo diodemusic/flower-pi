@@ -49,3 +49,12 @@ class DB:
             """)
 
             con.commit()
+
+    def get_readings(self):
+        with sqlite3.connect(self.DB_PATH) as con:
+            cur = con.cursor()
+            r = cur.execute(
+                'SELECT * FROM "readings" ORDER BY timestamp DESC LIMIT 100'
+            )
+
+            return r
