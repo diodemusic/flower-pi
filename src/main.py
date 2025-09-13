@@ -16,6 +16,6 @@ async def start_jobs():
 
 @app.get("/sensors")
 def read_sensors_route():
-    res = read_sensors()
+    r = read_sensors()
 
-    return res
+    return r
