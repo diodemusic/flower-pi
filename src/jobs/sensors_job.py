@@ -28,6 +28,7 @@ async def sensors_job():
             "pressure": pressure,
             "humidity": humidity,
         }
+
         db.save_reading(data)
         db.cleanup_old_readings()
 
@@ -38,4 +39,4 @@ async def sensors_job():
             GPIO.output(11, GPIO.LOW)
             is_led_on = False
 
-        await asyncio.sleep(5)
+        await asyncio.sleep(1)
