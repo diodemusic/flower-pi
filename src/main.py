@@ -5,7 +5,6 @@ import asyncio
 from src.controllers.sensors_controller import read_sensors
 
 from src.jobs.sensors_job import sensors_job
-from src.jobs.leds_job import leds_job
 
 app = FastAPI()
 
@@ -13,7 +12,6 @@ app = FastAPI()
 @app.on_event("startup")
 async def start_jobs():
     asyncio.create_task(sensors_job())
-    asyncio.create_task(leds_job())
 
 
 @app.get("/sensors")
