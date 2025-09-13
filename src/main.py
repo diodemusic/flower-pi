@@ -42,6 +42,7 @@ def dashboard():
           padding: 1rem;
           backdrop-filter: blur(10px);
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+          height: 300px; /* Added fixed height */
         }
       </style>
     </head>
@@ -51,29 +52,29 @@ def dashboard():
 
         <div class="glass">
           <h2 class="text-xl font-semibold mb-2">Light (lux)</h2>
-          <canvas id="lightChart" height="200"></canvas>
+          <canvas id="lightChart"></canvas>
         </div>
 
         <div class="glass">
           <h2 class="text-xl font-semibold mb-2">Temperature (°C)</h2>
-          <canvas id="tempChart" height="200"></canvas>
+          <canvas id="tempChart"></canvas>
         </div>
 
         <div class="glass">
           <h2 class="text-xl font-semibold mb-2">Pressure (hPa)</h2>
-          <canvas id="pressureChart" height="200"></canvas>
+          <canvas id="pressureChart"></canvas>
         </div>
 
         <div class="glass">
           <h2 class="text-xl font-semibold mb-2">Humidity (%)</h2>
-          <canvas id="humidityChart" height="200"></canvas>
+          <canvas id="humidityChart"></canvas>
         </div>
 
       </div>
 
       <script>
         async function loadData() {
-          const res = await fetch('/readings');
+          const res = await fetch('/sensors');
           const data = await res.json();
 
           const labels = data.map(r => r[1]).reverse();
