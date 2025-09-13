@@ -9,7 +9,8 @@ class DB:
         self.cur = self.con.cursor()
 
     def init_db(self):
-        self.cur.execute("""
+        with self.con:
+            self.cur.execute("""
                 CREATE TABLE IF NOT EXISTS readings (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -20,41 +21,37 @@ class DB:
                 )
             """)
 
-        self.con.commit()
-
     def save_reading(self, data):
-        self.cur.execute(
-            "INSERT INTO readings (light, temp, pressure, humidity) VALUES (?, ?, ?, ?)",
-            (
-                data.get("light", 0.00),
-                data.get("temp", 0.00),
-                data.get("pressure", 0.00),
-                data.get("humidity", 0.00),
-            ),
-        )
-
-        self.con.commit()
+        with self.con:
+            self.cur.execute(
+                "INSERT INTO readings (light, temp, pressure, humidity) VALUES (?, ?, ?, ?)",
+                (
+                    data.get("light", 0.00),
+                    data.get("temp", 0.00),
+                    data.get("pressure", 0.00),
+                    data.get("humidity", 0.00),
+                ),
+            )
 
     def cleanup_old_readings(self):
-        self.cur.execute("""
-            DELETE FROM readings
-            WHERE id NOT IN (
-                SELECT id FROM readings
-                ORDER BY timestamp DESC
-                LIMIT 3600
-            )
+        with self.con:
+            self.cur.execute("""
+                DELETE FROM readings
+                WHERE id NOT IN (
+                    SELECT id FROM readings
+                    ORDER BY timestamp DESC
+                    LIMIT 3600
+                )
             """)
 
-        self.con.commit()
-
     def get_readings(self):
-        self.cur.execute("""
+        with self.con:
+            self.cur.execute("""
                 SELECT * FROM readings
                 ORDER BY timestamp
                 DESC LIMIT 3600
             """)
-        r = self.cur.fetchall()
-
+            r = self.cur.fetchall()
         return r
 
 
