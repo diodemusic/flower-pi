@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Plant Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="min-h-screen flex flex-col items-center p-6 text-white">
+    <h1 class="text-4xl font-extrabold mb-8 drop-shadow-lg">🌱 Plant Sensor Dashboard</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
+
+        <div class="glass flex flex-col">
+            <h2 class="chart-title text-lg font-semibold mb-2">Light (lux)</h2>
+            <div class="chart-container flex-1"><canvas id="lightChart"></canvas></div>
+        </div>
+
+        <div class="glass flex flex-col">
+            <h2 class="chart-title text-lg font-semibold mb-2">Temperature (°C)</h2>
+            <div class="chart-container flex-1"><canvas id="tempChart"></canvas></div>
+        </div>
+
+        <div class="glass flex flex-col">
+            <h2 class="chart-title text-lg font-semibold mb-2">Pressure (hPa)</h2>
+            <div class="chart-container flex-1"><canvas id="pressureChart"></canvas></div>
+        </div>
+
+        <div class="glass flex flex-col">
+            <h2 class="chart-title text-lg font-semibold mb-2">Humidity (%)</h2>
+            <div class="chart-container flex-1"><canvas id="humidityChart"></canvas></div>
+        </div>
+
+    </div>
+</body>
+
+</html>
