@@ -81,17 +81,10 @@ def dashboard():
 
       <script>
         function formatTimeLabel(dateStr) {
-          // Format as HH:MM or HH:MM:SS if seconds are not 00
           const d = new Date(dateStr);
           let h = d.getHours().toString().padStart(2, '0');
           let m = d.getMinutes().toString().padStart(2, '0');
-          let s = d.getSeconds();
-          if (s === 0) {
-            return `${h}:${m}`;
-          } else {
-            s = s.toString().padStart(2, '0');
-            return `${h}:${m}:${s}`;
-          }
+          return `${h}:${m}`;
         }
 
         async function loadData() {
