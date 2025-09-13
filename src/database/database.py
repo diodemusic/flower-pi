@@ -41,7 +41,7 @@ class DB:
             WHERE id NOT IN (
                 SELECT id FROM readings
                 ORDER BY timestamp DESC
-                LIMIT 100
+                LIMIT 3600
             )
             """)
 
@@ -51,7 +51,7 @@ class DB:
         self.cur.execute("""
                 SELECT * FROM readings
                 ORDER BY timestamp
-                DESC LIMIT 100
+                DESC LIMIT 3600
             """)
         r = self.cur.fetchall()
 
