@@ -1,19 +1,12 @@
-import os
 import asyncio
 
 import RPi.GPIO as GPIO  # pyright: ignore[reportMissingModuleSource]
 
-from src.database.database import DB
+from src.database.database import db
 from sensors import BH1750, BME280
 
 bh1750 = BH1750.BH1750()
 bme280 = BME280.BME280()
-
-DB_PATH = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..", "database", "flowerpi.db")
-)
-db = DB(DB_PATH)
-db.init_db()
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)

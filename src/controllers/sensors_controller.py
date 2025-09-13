@@ -1,6 +1,4 @@
-from src.database.database import DB
-
-db = DB()
+from src.database.database import db
 
 
 def read_sensors():
