@@ -16,9 +16,9 @@ async def start_jobs():
 
 @app.get("/sensors")
 def read_sensors_route():
-    r = read_sensors()
+    sensors_data = read_sensors()
 
-    return r
+    return sensors_data
 
 
 @app.get("/dashboard", response_class=HTMLResponse)
@@ -32,7 +32,7 @@ def dashboard():
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       <style>
         body {
-          background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+          background: #14532d url('/static/background.jpg') no-repeat center center fixed;
           background-size: cover;
         }
         .glass {
@@ -205,7 +205,7 @@ def dashboard():
   }
 
   loadData();
-  setInterval(loadData, 1000);
+  setInterval(loadData, 5000);
 </script>
     </body>
     </html>
