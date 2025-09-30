@@ -211,3 +211,6 @@ flowerpi.db
 
 # DS Store
 .DS_Store
+
+# Local cSpell.words config
+.vscode
