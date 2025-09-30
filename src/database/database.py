@@ -16,7 +16,6 @@ class DB:
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
                     light REAL,
                     temp REAL,
-                    pressure REAL,
                     humidity REAL
                 )
             """)
@@ -24,11 +23,10 @@ class DB:
     def save_reading(self, data):
         with self.con:
             self.cur.execute(
-                "INSERT INTO readings (light, temp, pressure, humidity) VALUES (?, ?, ?, ?)",
+                "INSERT INTO readings (light, temp, humidity) VALUES (?, ?, ?, ?)",
                 (
                     data.get("light", 0.00),
                     data.get("temp", 0.00),
-                    data.get("pressure", 0.00),
                     data.get("humidity", 0.00),
                 ),
             )
