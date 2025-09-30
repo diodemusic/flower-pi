@@ -24,4 +24,4 @@ async def sensors_job():
         db.save_reading(data)
         db.cleanup_old_readings()
 
-        await asyncio.sleep(1)
+        await asyncio.sleep(60)
