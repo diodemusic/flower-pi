@@ -1,3 +1,4 @@
 smbus2==0.5.0
 sqlite-web==0.6.4
 RPi.GPIO==0.7.1
+adafruit_circuitpython_dht==4.0.9
